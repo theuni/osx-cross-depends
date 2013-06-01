@@ -9,6 +9,7 @@ make $MAKEOPTS -f native-libuuid.mk
 make $MAKEOPTS -f native-openssl.mk
 make $MAKEOPTS -f native-libprotobuf.mk
 make $MAKEOPTS -f native-cctools.mk
+make $MAKEOPTS -f native-cdrkit.mk
 
 make $MAKEOPTS -f libbdb.mk
 make $MAKEOPTS -f openssl.mk
