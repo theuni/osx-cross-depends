@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-if [ ! -f MacOSX10.6.pkg ]; then
-  echo "Missing MacOSX10.6.pkg. Though it is freely available from Apple, it cannot be freely redistributed."
+if [ ! -f sources/MacOSX10.6.pkg ]; then
+  echo "Missing sources/MacOSX10.6.pkg. Though it is freely available from Apple, it cannot be freely redistributed."
   echo "To obtain it, register for a developer account, then download xcode_3.2.6_and_ios_sdk_4.3.dmg:"
   echo "https://developer.apple.com/devcenter/download.action?path=/Developer_Tools/xcode_3.2.6_and_ios_sdk_4.3__final/xcode_3.2.6_and_ios_sdk_4.3.dmg"
   echo "There is plenty of info on the net about extracting MacOSX10.6.pkg from there."
