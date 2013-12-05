@@ -1,0 +1,16 @@
+--- configure	2013-11-21 17:17:42.133441877 -0500
++++ configure.patched	2013-11-21 17:32:32.101433360 -0500
+@@ -267,12 +267,7 @@
+ PLATFORM_QWS=maybe
+ PLATFORM_QPA=maybe
+ BUILD_ON_MAC=no
+-if [ -d /System/Library/Frameworks/Carbon.framework ]; then
+-    PLATFORM_MAC=maybe
+-    BUILD_ON_MAC=yes
+-else
+-    PLATFORM_MAC=no
+-fi
++PLATFORM_MAC=maybe
+ 
+ #-----------------------------------------------------------------------------
+ # Qt version detection

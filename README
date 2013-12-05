@@ -1,0 +1,95 @@
+Deterministic OSX Dmg.
+
+What is this?
+This is a set of helper files to allow the creation of a Deterministic OSX
+Bitcoin-Qt installer from Linux. At the time of this writing it is able to
+produce a working, deterministic dmg (Tested on 10.6 and 10.8), but it is
+a proof of concept, and _very_ ugly.
+
+Why?
+Two things were needed:
+1. A way to build OSX Bitcoin binaries from Linux, for easier testing and
+   automation.
+2. A deterministic dmg for stable releases, so that users don't have to trust
+   that their binaries aren't spoofed.
+
+These two things are combined here.
+
+How?
+Using a combination of Clang and Apple's open-source build tools.
+
+Clang understands darwin-specific options such as -arch, -mmacosx-version-min,
+and Framework handling. Unfortunately, Clang relies on GNU ld (for now), so
+these object files aren't very useful with Clang alone. To fix this, Apple's
+binutils (cctools in Apple-speak) are built on the host machine. Clang is then
+directed towards these tools.
+
+There are 2 phases to the build-process. First, build-side tools are built with
+the system's existing toolchain. They are installed to their own prefix. After
+that, the target libraries can be built with them, as well as Bitcoin itself.
+The target libs are installed to their own prefix. Bitcoin's build is then
+pointed at the target prefix to find its dependencies.
+
+All libs are built static except for Qt, since it is much better supported as a
+framework.
+
+Bitcoin-Qt runs with no obvious regressions and bitcoind and bitcoin-qt tests
+pass.
+
+Hurdles and Solutions:
+
+- Apple's SDK is required for headers and frameworks. It is free to download,
+  but cannot be redistributed. It can be acquired by registering a free
+  account, grabbing the full SDK, and extracting the necessary package.
+
+- Most libs can't handle being built in Linux, so they have been extensively
+  patched. Most of these patches come from Macports. Thanks Macports!
+
+- Clang requires the "-target" flag for cross builds. This has been patched in
+  in many places.
+
+- Clang can't find a working linker by default. The undocumented "-B" flag is
+used, which mimic's gcc's behavior.
+
+- Apple's ar/libtool aren't deterministic. The undocumented environment
+  variable ZERO_AR_DATE is set, which zeroes out timestamps and fixes that.
+
+- DMGs are rough to build. Really rough. genisoimage (mkisofs) is used to
+  create a very simple one. It is non-deterministic, but faketime works to fix
+  that.
+
+This can all be automated using Gitian. Descriptors have been provided.
+
+Howto:
+
+1. Use Acquire the SDK. See the note in download.sh for more info.
+2. Run ./download.sh to grab all necessary sources.
+3. Run ./build.sh
+
+   All necessary dependencies are now installed in prefix.
+
+
+Respected environment variables:
+- $PREFIX: Prefix where target files will be installed.
+- $NATIVEPREFIX: Prefix where host libs and tools will be installed.
+- $SOURCES_PATH: Where the source tarballs should be found.
+  default paths.
+
+
+TODO:
+
+- Evaluate whether it's necessary to be able to build outside of Gitian. If so,
+  these Makefiles need an overhaul.
+
+- Prettify the dmg installer. DMGs are typically customized by mounting,
+  decorating, and unmounting. This is not possible in Linux. Instead, it is
+  done in OSX and the customization file (.DS_Store) is saved and injected
+  into the DMG. This is currently working but has a few rough edges.
+
+- DMGs are uncompressed. There are a few options for fixing this, they need
+  further investigation.
+
+- Test in 10.5 and 10.9.
+
+- Move openssl to a dylib. It is linked by bitcoin-qt as well as the qt
+  framework, so it exists twice in the final dmg.

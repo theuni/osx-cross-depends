@@ -1,0 +1,19 @@
+--- config.tests/unix/compile.test	2013-06-07 01:16:41.000000000 -0400
++++ config.tests/unix/compile.test.new	2013-11-22 15:32:21.628675584 -0500
+@@ -37,6 +37,16 @@
+         CXXFLAGS="$CXXFLAGS -isysroot $2"
+         shift
+         ;;
++    -target)
++        CXXFLAGS="$CXXFLAGS -target $2"
++        LFLAGS="$LFLAGS -target $2"
++        shift
++        ;;
++    -B)
++        CXXFLAGS="$CXXFLAGS -B $2"
++        LFLAGS="$LFLAGS -B $2"
++        shift
++        ;;
+     -F*|-m*|-x*)
+         LFLAGS="$LFLAGS $PARAM"
+         CXXFLAGS="$CXXFLAGS $PARAM"

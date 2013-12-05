@@ -1,0 +1,11 @@
+--- configure	2013-06-07 01:16:41.000000000 -0400
++++ configure.new	2013-11-21 20:20:57.301336662 -0500
+@@ -8715,7 +8715,7 @@
+ 
+ # Ensure we can link to uninistalled libraries
+ QMAKE_COMPILER="`getQMakeConf QMAKE_CXX`"
+-if [ "$XPLATFORM_MINGW" != "yes" ] && [ "$CFG_EMBEDDED" != "nacl" ] && linkerSupportsFlag "$QMAKE_COMPILER" -rpath-link "$outpath/lib"; then
++if [ "$XPLATFORM_MINGW" != "yes" ] && [ "$CFG_EMBEDDED" != "nacl" ] && [ "$PLATFORM_MAC" != "yes" ] && linkerSupportsFlag "$QMAKE_COMPILER" -rpath-link "$outpath/lib"; then
+     echo "QMAKE_LFLAGS    = -Wl,-rpath-link,\$\$QT_BUILD_TREE/lib \$\$QMAKE_LFLAGS" >> "$CACHEFILE.tmp"
+ fi
+ if [ -n "$QT_CFLAGS_PSQL" ]; then

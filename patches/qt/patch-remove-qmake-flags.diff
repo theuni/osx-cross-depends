@@ -1,0 +1,69 @@
+--- configure	2013-11-21 21:18:11.925303796 -0500
++++ configure.new	2013-11-21 21:19:15.365303189 -0500
+@@ -7978,36 +7978,36 @@
+ # using the Xarch compiler option when supported (10.5 and up).  On 10.4 the
+ # deployment version is set to 10.4 globally using the QMAKE_MACOSX_DEPLOYMENT_TARGET
+ # env. variable. 
+-if [ "$PLATFORM_MAC" = "yes" ] && [ "$CFG_MAC_XARCH" != "no" ] ; then
+-    if echo "$CFG_MAC_ARCHS" | grep '\<x86\>' > /dev/null 2>&1; then
+-        QMakeVar add QMAKE_CFLAGS "-Xarch_i386 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@ -target @TARGET_TRIPLE@"
+-        QMakeVar add QMAKE_CXXFLAGS "-Xarch_i386 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@ -target @TARGET_TRIPLE@"
+-        QMakeVar add QMAKE_LFLAGS "-Xarch_i386 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@ -target @TARGET_TRIPLE@"
+-        QMakeVar add QMAKE_OBJECTIVE_CFLAGS_X86 "-arch i386 -Xarch_i386 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@ -target @TARGET_TRIPLE@"
+-        QMakeVar add QMAKE_OBJECTIVE_CXXFLAGS_X86 "-arch i386 -Xarch_i386 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@ -target @TARGET_TRIPLE@"
+-    fi
+-    if echo "$CFG_MAC_ARCHS" | grep '\<ppc\>' > /dev/null 2>&1; then
+-        QMakeVar add QMAKE_CFLAGS "-Xarch_ppc -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
+-        QMakeVar add QMAKE_CXXFLAGS "-Xarch_ppc -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
+-        QMakeVar add QMAKE_LFLAGS "-Xarch_ppc -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
+-        QMakeVar add QMAKE_OBJECTIVE_CFLAGS_PPC "-arch ppc -Xarch_ppc -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
+-        QMakeVar add QMAKE_OBJECTIVE_CXXFLAGS_PPC "-arch ppc -Xarch_ppc -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
+-    fi
+-    if echo "$CFG_MAC_ARCHS" | grep '\<x86_64\>' > /dev/null 2>&1; then
+-        QMakeVar add QMAKE_CFLAGS "-Xarch_x86_64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
+-        QMakeVar add QMAKE_CXXFLAGS "-Xarch_x86_64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
+-        QMakeVar add QMAKE_LFLAGS "-Xarch_x86_64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
+-        QMakeVar add QMAKE_OBJECTIVE_CFLAGS_X86_64 "-arch x86_64 -Xarch_x86_64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
+-        QMakeVar add QMAKE_OBJECTIVE_CXXFLAGS_X86_64 "-arch x86_64 -Xarch_x86_64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
+-    fi
+-    if echo "$CFG_MAC_ARCHS" | grep '\<ppc64\>' > /dev/null 2>&1; then
+-        QMakeVar add QMAKE_CFLAGS "-Xarch_ppc64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
+-        QMakeVar add QMAKE_CXXFLAGS "-Xarch_ppc64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
+-        QMakeVar add QMAKE_LFLAGS "-Xarch_ppc64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
+-        QMakeVar add QMAKE_OBJECTIVE_CFLAGS_PPC_64 "-arch ppc64 -Xarch_ppc64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
+-        QMakeVar add QMAKE_OBJECTIVE_CXXFLAGS_PPC_64 "-arch ppc64 -Xarch_ppc64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
+-    fi
+-fi
++#if [ "$PLATFORM_MAC" = "yes" ] && [ "$CFG_MAC_XARCH" != "no" ] ; then
++#    if echo "$CFG_MAC_ARCHS" | grep '\<x86\>' > /dev/null 2>&1; then
++#        QMakeVar add QMAKE_CFLAGS "-Xarch_i386 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@ -target @TARGET_TRIPLE@"
++#        QMakeVar add QMAKE_CXXFLAGS "-Xarch_i386 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@ -target @TARGET_TRIPLE@"
++#        QMakeVar add QMAKE_LFLAGS "-Xarch_i386 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@ -target @TARGET_TRIPLE@"
++#        QMakeVar add QMAKE_OBJECTIVE_CFLAGS_X86 "-arch i386 -Xarch_i386 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@ -target @TARGET_TRIPLE@"
++#        QMakeVar add QMAKE_OBJECTIVE_CXXFLAGS_X86 "-arch i386 -Xarch_i386 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@ -target @TARGET_TRIPLE@"
++#    fi
++#    if echo "$CFG_MAC_ARCHS" | grep '\<ppc\>' > /dev/null 2>&1; then
++#        QMakeVar add QMAKE_CFLAGS "-Xarch_ppc -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
++#        QMakeVar add QMAKE_CXXFLAGS "-Xarch_ppc -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
++#        QMakeVar add QMAKE_LFLAGS "-Xarch_ppc -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
++#        QMakeVar add QMAKE_OBJECTIVE_CFLAGS_PPC "-arch ppc -Xarch_ppc -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
++#        QMakeVar add QMAKE_OBJECTIVE_CXXFLAGS_PPC "-arch ppc -Xarch_ppc -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
++#    fi
++#    if echo "$CFG_MAC_ARCHS" | grep '\<x86_64\>' > /dev/null 2>&1; then
++#        QMakeVar add QMAKE_CFLAGS "-Xarch_x86_64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
++#        QMakeVar add QMAKE_CXXFLAGS "-Xarch_x86_64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
++#        QMakeVar add QMAKE_LFLAGS "-Xarch_x86_64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
++#        QMakeVar add QMAKE_OBJECTIVE_CFLAGS_X86_64 "-arch x86_64 -Xarch_x86_64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
++#        QMakeVar add QMAKE_OBJECTIVE_CXXFLAGS_X86_64 "-arch x86_64 -Xarch_x86_64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
++#    fi
++#    if echo "$CFG_MAC_ARCHS" | grep '\<ppc64\>' > /dev/null 2>&1; then
++#        QMakeVar add QMAKE_CFLAGS "-Xarch_ppc64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
++#        QMakeVar add QMAKE_CXXFLAGS "-Xarch_ppc64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
++#        QMakeVar add QMAKE_LFLAGS "-Xarch_ppc64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
++#        QMakeVar add QMAKE_OBJECTIVE_CFLAGS_PPC_64 "-arch ppc64 -Xarch_ppc64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
++#        QMakeVar add QMAKE_OBJECTIVE_CXXFLAGS_PPC_64 "-arch ppc64 -Xarch_ppc64 -mmacosx-version-min=@MACOSX_DEPLOYMENT_TARGET@"
++#    fi
++#fi
+ 
+ #-------------------------------------------------------------------------------
+ # generate QT_BUILD_KEY
