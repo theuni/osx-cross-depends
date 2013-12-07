@@ -52,6 +52,7 @@ script: |
   make $MAKEOPTS -f qt.mk
 
   rm -f prefix/Library/Frameworks/*.la
+  find prefix/Library/Frameworks -name "*.prl" -delete
 
   export GZIP="-9n"
   find native-prefix prefix | sort | tar --no-recursion -czf osx-depends-qt.tar.gz -T -
