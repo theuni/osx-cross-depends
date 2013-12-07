@@ -93,3 +93,5 @@ TODO:
 
 - Move openssl to a dylib. It is linked by bitcoin-qt as well as the qt
   framework, so it exists twice in the final dmg.
+
+Bounty/Donation address: 17uFa79oMQD6X8Tw4WL7ceFJY2zJJFGfrr
