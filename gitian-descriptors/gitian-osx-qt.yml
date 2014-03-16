@@ -18,7 +18,7 @@ remotes:
 - "url": "https://github.com/theuni/osx-cross-depends.git"
   "dir": "osx-cross-depends"
 files:
-- "qt-everywhere-opensource-src-4.8.5.tar.gz"
+- "qt-everywhere-opensource-src-5.2.1.tar.gz"
 - "clang-llvm-3.2-x86-linux-ubuntu-12.04.tar.gz"
 - "osx-native-depends.tar.gz"
 - "osx-depends.tar.gz"

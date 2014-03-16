@@ -33,7 +33,7 @@ files:
 - "llvmgcc42-2336.1.tar.gz"
 - "openssl-1.0.1e.tar.gz"
 - "protobuf-2.5.0.tar.bz2"
-- "qt-everywhere-opensource-src-4.8.5.tar.gz"
+- "qt-everywhere-opensource-src-5.2.1.tar.gz"
 - "xar-1.5.2.tar.gz"
 - "MacOSX10.6.pkg"
 - "cdrkit-1.1.11.tar.gz"

@@ -17,4 +17,4 @@ make $MAKEOPTS -f libminiupnpc.mk
 make $MAKEOPTS -f libqrencode.mk
 make $MAKEOPTS -f libprotobuf.mk
 make $MAKEOPTS -f boost.mk
-make $MAKEOPTS -f qt.mk
+make $MAKEOPTS -f qt5.mk

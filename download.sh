@@ -24,7 +24,7 @@ ${RETRIEVE} http://miniupnp.free.fr/files/miniupnpc-1.6.tar.gz
 ${RETRIEVE} https://www.openssl.org/source/openssl-1.0.1e.tar.gz
 ${RETRIEVE} https://protobuf.googlecode.com/files/protobuf-2.5.0.tar.bz2
 ${RETRIEVE} http://fukuchi.org/works/qrencode/qrencode-3.2.0.tar.bz2
-${RETRIEVE} http://download.qt-project.org/official_releases/qt/4.8/4.8.5/qt-everywhere-opensource-src-4.8.5.tar.gz
+${RETRIEVE} http://download.qt-project.org/official_releases/qt/5.2/5.2.1/single/qt-everywhere-opensource-src-5.2.1.tar.gz
 ${RETRIEVE} https://xar.googlecode.com/files/xar-1.5.2.tar.gz
 ${RETRIEVE} http://llvm.org/releases/3.2/clang+llvm-3.2-x86-linux-ubuntu-12.04.tar.gz
 ${RETRIEVE} http://cdrkit.org/releases/cdrkit-1.1.11.tar.gz
@@ -46,6 +46,6 @@ echo "bbd6b756e6af44b5a5b0f9b93eada3fb8922ed1d6451b7d6f184d0ae0c813994  miniupnp
 echo "f74f15e8c8ff11aa3d5bb5f276d202ec18d7246e95f961db76054199c69c1ae3  openssl-1.0.1e.tar.gz" | sha256sum -c
 echo "13bfc5ae543cf3aa180ac2485c0bc89495e3ae711fc6fab4f8ffe90dfb4bb677  protobuf-2.5.0.tar.bz2" | sha256sum -c
 echo "03c4bc7cd9a75747c3815d509bbe061907d615764f2357923f0db948c567068f  qrencode-3.2.0.tar.bz2" | sha256sum -c
-echo "eb728f8268831dc4373be6403b7dd5d5dde03c169ad6882f9a8cb560df6aa138  qt-everywhere-opensource-src-4.8.5.tar.gz" | sha256sum -c
+echo "84e924181d4ad6db00239d87250cc89868484a14841f77fb85ab1f1dbdcd7da1  qt-everywhere-opensource-src-5.2.1.tar.gz" | sha256sum -c
 echo "4c5d5682803cdfab16d72365cf51fc4075d597c5eeaa8c7d1990fea98cdae3e6  xar-1.5.2.tar.gz" | sha256sum -c
 echo "d1c030756ecc182defee9fe885638c1785d35a2c2a297b4604c0e0dcc78e47da  cdrkit-1.1.11.tar.gz" | sha256sum -c
