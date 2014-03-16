@@ -5,10 +5,12 @@ if [ ! -f sources/MacOSX10.6.pkg ]; then
   echo "Missing sources/MacOSX10.6.pkg. Though it is freely available from Apple, it cannot be freely redistributed."
   echo "To obtain it, register for a developer account, then download xcode_3.2.6_and_ios_sdk_4.3.dmg:"
   echo "https://developer.apple.com/devcenter/download.action?path=/Developer_Tools/xcode_3.2.6_and_ios_sdk_4.3__final/xcode_3.2.6_and_ios_sdk_4.3.dmg"
-  echo "There is plenty of info on the net about extracting MacOSX10.6.pkg from there."
+  echo "You can use the script extract_sdk.sh to extract MacOSX10.6.pkg from there."
   exit 1
 fi
+cd sources
 echo "a2ccf2299de4e0bb88bd17a3355f02b747575b97492c7c2f5b789a64ccc4cbd6  MacOSX10.6.pkg" | sha256sum -c
+cd ..
 
 RETRIEVE="wget -nc -P sources"
 ${RETRIEVE} https://github.com/mingwandroid/toolchain4/archive/10cc648683617cca8bcbeae507888099b41b530c.tar.gz
@@ -29,6 +31,7 @@ ${RETRIEVE} https://xar.googlecode.com/files/xar-1.5.2.tar.gz
 ${RETRIEVE} http://llvm.org/releases/3.2/clang+llvm-3.2-x86-linux-ubuntu-12.04.tar.gz
 ${RETRIEVE} http://cdrkit.org/releases/cdrkit-1.1.11.tar.gz
 
+cd sources
 #gitian doesn't like the + in this filename
 mv clang+llvm-3.2-x86-linux-ubuntu-12.04.tar.gz clang-llvm-3.2-x86-linux-ubuntu-12.04.tar.gz
 
@@ -49,3 +52,5 @@ echo "03c4bc7cd9a75747c3815d509bbe061907d615764f2357923f0db948c567068f  qrencode
 echo "84e924181d4ad6db00239d87250cc89868484a14841f77fb85ab1f1dbdcd7da1  qt-everywhere-opensource-src-5.2.1.tar.gz" | sha256sum -c
 echo "4c5d5682803cdfab16d72365cf51fc4075d597c5eeaa8c7d1990fea98cdae3e6  xar-1.5.2.tar.gz" | sha256sum -c
 echo "d1c030756ecc182defee9fe885638c1785d35a2c2a297b4604c0e0dcc78e47da  cdrkit-1.1.11.tar.gz" | sha256sum -c
+cd ..
+
