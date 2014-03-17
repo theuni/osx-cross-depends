@@ -7,7 +7,7 @@ QT_OPTS += -no-audio-backend  -no-javascript-jit -no-sql-sqlite -no-sql-tds
 QT_OPTS += -no-cups -no-iconv -no-dbus -no-gif -no-audio-backend -no-freetype
 QT_OPTS += -no-javascript-jit -no-sql-sqlite -no-nis -no-cups -no-iconv -no-pch
 QT_OPTS += -no-dbus -no-gif -no-sm -nomake examples -no-feature-style-plastique
-QT_OPTS += -no-reduce-exports -no-xcb -no-qml-debug -no-pch -no-nis
+QT_OPTS += -no-xcb -no-qml-debug -no-pch -no-nis
 QT_OPTS += -no-feature-style-cde -no-feature-style-s60 -no-feature-style-motif
 QT_OPTS += -no-feature-style-windowsmobile -no-feature-style-windowsce
 QT_OPTS += -no-feature-style-cleanlooks
@@ -41,11 +41,13 @@ $(PREFIX)/lib/libQtCore.a: $(SOURCE_FILE)
 
 	cd $(BUILD_DIR); ./configure $(QT_BUILD_CONFIG) $(QT_OPTS)
 	cd $(BUILD_DIR); $(MAKE) module-qtbase-make_first
+	cd $(BUILD_DIR); $(MAKE) module-qttranslations-make_first
 	cd $(BUILD_DIR)/qtbase; $(MAKE)
 	cd $(BUILD_DIR)/qtbase; $(MAKE) install
-	cd $(PREFIX)/include; ln -s ../lib/QtNetwork.framework/Headers/ QtNetwork
-	cd $(PREFIX)/include; ln -s ../lib/QtWidgets.framework/Headers/ QtWidgets
-	cd $(PREFIX)/include; ln -s ../lib/QtGui.framework/Headers/ QtGui
-	cd $(PREFIX)/include; ln -s ../lib/QtCore.framework/Headers/ QtCore
+	cd $(BUILD_DIR)/qttranslations; $(MAKE) install
+	cd $(PREFIX)/include; ln -sf ../lib/QtNetwork.framework/Headers/ QtNetwork
+	cd $(PREFIX)/include; ln -sf ../lib/QtWidgets.framework/Headers/ QtWidgets
+	cd $(PREFIX)/include; ln -sf ../lib/QtGui.framework/Headers/ QtGui
+	cd $(PREFIX)/include; ln -sf ../lib/QtCore.framework/Headers/ QtCore
 
 	touch $@
