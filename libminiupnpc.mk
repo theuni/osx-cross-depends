@@ -1,6 +1,6 @@
 include include.mk
-SOURCE_FILE=$(SOURCES_PATH)/miniupnpc-1.6.tar.gz
-BUILD_DIR=$(BUILD_BASE)/miniupnpc-1.6
+SOURCE_FILE=$(SOURCES_PATH)/miniupnpc-1.9.tar.gz
+BUILD_DIR=$(BUILD_BASE)/miniupnpc-1.9
 
 $(PREFIX)/lib/libminiupnpc.a: $(SOURCE_FILE)
 	tar -C $(BUILD_BASE) -xf $<
