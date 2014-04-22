@@ -20,13 +20,13 @@ remotes:
 files:
 - "boost_1_55_0.tar.bz2"
 - "db-4.8.30.NC.tar.gz"
-- "miniupnpc-1.6.tar.gz"
-- "openssl-1.0.1e.tar.gz"
+- "miniupnpc-1.9.tar.gz"
+- "openssl-1.0.1g.tar.gz"
 - "protobuf-2.5.0.tar.bz2"
-- "qrencode-3.2.0.tar.bz2"
+- "qrencode-3.4.3.tar.bz2"
 - "MacOSX10.6.pkg"
 - "clang-llvm-3.2-x86-linux-ubuntu-12.04.tar.gz"
-- "osx-native-depends.tar.gz"
+- "osx-native-depends-r1.tar.gz"
 
 script: |
   export SOURCES_PATH=`pwd`
@@ -37,7 +37,7 @@ script: |
   export PATH=`pwd`/clang+llvm-3.2-x86-linux-ubuntu-12.04/bin:$PATH
 
   cd osx-cross-depends
-  tar xf /home/ubuntu/build/osx-native-depends.tar.gz
+  tar xf /home/ubuntu/build/osx-native-depends-r1.tar.gz
   export PATH=`pwd`/native-prefix/bin:$PATH
 
   make $MAKEOPTS -f libbdb.mk
@@ -48,6 +48,6 @@ script: |
   make $MAKEOPTS -f boost.mk
 
   export GZIP="-9n"
-  find native-prefix prefix | sort | tar --no-recursion -czf osx-depends.tar.gz -T -
+  find native-prefix prefix | sort | tar --no-recursion -czf osx-depends-r1.tar.gz -T -
 
-  mv osx-depends.tar.gz $OUTDIR
+  mv osx-depends-r1.tar.gz $OUTDIR

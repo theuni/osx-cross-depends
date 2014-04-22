@@ -31,7 +31,7 @@ files:
 - "e2fsprogs-libs-1.41.14.tar.gz"
 - "ld64-127.2.tar.gz"
 - "llvmgcc42-2336.1.tar.gz"
-- "openssl-1.0.1e.tar.gz"
+- "openssl-1.0.1g.tar.gz"
 - "protobuf-2.5.0.tar.bz2"
 - "qt-everywhere-opensource-src-5.2.1.tar.gz"
 - "xar-1.5.2.tar.gz"
@@ -79,5 +79,6 @@ script: |
   rm -rf native-prefix/docs
 
   export GZIP="-9n"
-  find native-prefix SDKs | sort | tar --no-recursion -czf osx-native-depends.tar.gz -T -
-  mv osx-native-depends.tar.gz $OUTDIR
+  export REVISION=r1
+  find native-prefix SDKs | sort | tar --no-recursion -czf osx-native-depends-$REVISION.tar.gz -T -
+  mv osx-native-depends-$REVISION.tar.gz $OUTDIR
