@@ -1,6 +1,6 @@
 include include.mk
-SOURCE_FILE=$(SOURCES_PATH)/openssl-1.0.1e.tar.gz
-BUILD_DIR=$(BUILD_BASE)/openssl-1.0.1e
+SOURCE_FILE=$(SOURCES_PATH)/openssl-1.0.1g.tar.gz
+BUILD_DIR=$(BUILD_BASE)/openssl-1.0.1g
 
 $(PREFIX)/lib/libssl.a: $(SOURCE_FILE)
 	tar -C $(BUILD_BASE) -xf $<

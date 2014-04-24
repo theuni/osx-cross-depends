@@ -62,7 +62,7 @@ This can all be automated using Gitian. Descriptors have been provided.
 
 Howto:
 
-1. Use Acquire the SDK. See the note in download.sh for more info.
+1. Acquire the SDK. See the note in download.sh for more info.
 2. Run ./download.sh to grab all necessary sources.
 3. Run ./build.sh
 

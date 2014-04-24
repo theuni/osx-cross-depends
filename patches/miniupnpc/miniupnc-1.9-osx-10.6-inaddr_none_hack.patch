@@ -1,0 +1,25 @@
+diff -urN miniupnpc-1.9.orig/miniupnpc.c miniupnpc-1.9/miniupnpc.c
+--- miniupnpc-1.9.orig/miniupnpc.c	2013-12-13 02:22:28.000000000 -1000
++++ miniupnpc-1.9/miniupnpc.c	2014-04-22 12:11:55.173823480 -1000
+@@ -17,9 +17,10 @@
+ #endif
+ #endif
+ 
+-#if !defined(__DragonFly__) && !defined(__OpenBSD__) && !defined(__NetBSD__) && !defined(MACOSX) && !defined(_WIN32) && !defined(__CYGWIN__) && !defined(__sun)
+-#define HAS_IP_MREQN
+-#endif
++// HACK: This assumption is broken on MacOS X 10.6.8
++//#if !defined(__DragonFly__) && !defined(__OpenBSD__) && !defined(__NetBSD__) && !defined(MACOSX) && !defined(_WIN32) && !defined(__CYGWIN__) && !defined(__sun)
++//#define HAS_IP_MREQN
++//#endif
+ 
+ #include <stdlib.h>
+ #include <stdio.h>
+@@ -519,6 +520,7 @@
+ 		} else {
+ 			struct in_addr mc_if;
+ 			mc_if.s_addr = inet_addr(multicastif); /* ex: 192.168.x.x */
++#define INADDR_NONE   0xffffffff
+ 			if(mc_if.s_addr != INADDR_NONE)
+ 			{
+ 				((struct sockaddr_in *)&sockudp_r)->sin_addr.s_addr = mc_if.s_addr;

@@ -20,9 +20,9 @@ remotes:
   "dir": "bitcoin"
 files:
 - "clang-llvm-3.2-x86-linux-ubuntu-12.04.tar.gz"
-- "osx-native-depends.tar.gz"
-- "osx-depends.tar.gz"
-- "osx-depends-qt.tar.gz"
+- "osx-native-depends-r1.tar.gz"
+- "osx-depends-r1.tar.gz"
+- "osx-depends-qt-5.2.1-r1.tar.gz"
 
 script: |
   HOST=i686-apple-darwin11
@@ -37,9 +37,9 @@ script: |
 
   export PATH=`pwd`/clang+llvm-3.2-x86-linux-ubuntu-12.04/bin:$PATH
   mkdir osx-cross-depends
-  tar -C osx-cross-depends -xf osx-native-depends.tar.gz
-  tar -C osx-cross-depends -xf osx-depends.tar.gz
-  tar -C osx-cross-depends -xf osx-depends-qt.tar.gz
+  tar -C osx-cross-depends -xf osx-native-depends-r1.tar.gz
+  tar -C osx-cross-depends -xf osx-depends-r1.tar.gz
+  tar -C osx-cross-depends -xf osx-depends-qt-5.2.1-r1.tar.gz
   export PATH=`pwd`/osx-cross-depends/native-prefix/bin:$PATH
 
   cd bitcoin
