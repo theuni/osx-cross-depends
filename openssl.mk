@@ -12,7 +12,7 @@ $(PREFIX)/lib/libssl.a: $(SOURCE_FILE)
 	cd $(BUILD_DIR); patch -p0 < $(PATCHES_DIR)/openssl/patch-Makefile.org.diff
 	sed -ie "s|cc:|$(CC):|" $(BUILD_DIR)/Configure
 	sed -ie "s|\(-arch [_a-zA-Z0-9]*\)|\1 --sysroot $(SDK)  -target $(HOST) -msse2|" $(BUILD_DIR)/Configure
-	cd $(BUILD_DIR); AR=$(AR) RANLIB=$(RANLIB) ./Configure -L$(PREFIX)/lib --openssldir=$(PREFIX)/etc/openssl zlib no-krb5 no-shared $(OPENSSL_ARCH) $(CPPFLAGS) --prefix=$(PREFIX)
+	cd $(BUILD_DIR); AR=$(AR) RANLIB=$(RANLIB) ./Configure -L$(PREFIX)/lib --openssldir=$(PREFIX)/etc/openssl zlib shared no-krb5 $(OPENSSL_ARCH) $(CPPFLAGS) $(LDFLAGS) --prefix=$(PREFIX)
 	sed -i "s|engines apps test|engines|" $(BUILD_DIR)/Makefile
 	sed -i "/define DATE/d" $(BUILD_DIR)/crypto/Makefile
 	cd $(BUILD_DIR); $(MAKE) -j1 build_libs libcrypto.pc libssl.pc openssl.pc
