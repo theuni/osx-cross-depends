@@ -49,5 +49,6 @@ $(PREFIX)/lib/libQtCore.a: $(SOURCE_FILE)
 	cd $(PREFIX)/include; ln -sf ../lib/QtWidgets.framework/Headers/ QtWidgets
 	cd $(PREFIX)/include; ln -sf ../lib/QtGui.framework/Headers/ QtGui
 	cd $(PREFIX)/include; ln -sf ../lib/QtCore.framework/Headers/ QtCore
+	cd $(PREFIX)/include; ln -sf ../lib/QtTest.framework/Headers/ QtTest
 
 	touch $@
