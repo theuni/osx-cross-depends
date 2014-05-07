@@ -4,10 +4,10 @@ SOURCES_PATH ?= $(CURDIR)/sources
 
 BUILD_BASE=$(CURDIR)/build
 PATCHES_DIR=$(CURDIR)/patches
-HOST=i686-apple-darwin11
+HOST=x86_64-apple-darwin11
 SDK=$(CURDIR)/SDKs/MacOSX10.6.sdk
 CLANG_INCLUDES=/usr/include/clang/3.2/include
-MIN_VERSION=10.5
+MIN_VERSION=10.6
 CFLAGS=-target $(HOST) -mmacosx-version-min=$(MIN_VERSION) --sysroot $(SDK) -msse2 -Qunused-arguments
 CXXFLAGS=$(CFLAGS)
 LDFLAGS=-B$(NATIVEPREFIX)/bin -L$(PREFIX)/lib -L$(SDK)/usr/lib/i686-apple-darwin10/4.2.1
