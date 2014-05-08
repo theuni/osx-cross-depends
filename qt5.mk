@@ -40,11 +40,22 @@ $(PREFIX)/lib/libQtCore.a: $(SOURCE_FILE)
 	sed -i "s|^CUSTOM_TARGET=$$|CUSTOM_TARGET=-target $(HOST)|" $(SPECFILE)
 
 	cd $(BUILD_DIR); ./configure $(QT_BUILD_CONFIG) $(QT_OPTS)
-	cd $(BUILD_DIR); $(MAKE) module-qtbase-make_first
+
+	# RCC's output is sorted using each file entry's hash as the key. Unfortunately,
+	# the hash function uses a random seed for each run so the results aren't
+	# deterministic. This leads to static resources being defined in a random order,
+	# which in-turn means that object files are not predictable.
+	# Fortunately, this upsets Qt's unit tests as well, so they've added the
+	# QT_RCC_TEST environment variable to set a pre-defined seed. Here, do the same
+	# thing for the same reason.
+	cd $(BUILD_DIR); QT_RCC_TEST=1 $(MAKE) module-qtbase-make_first
+
+
 	cd $(BUILD_DIR); $(MAKE) module-qttranslations-make_first
 	cd $(BUILD_DIR)/qtbase; $(MAKE)
 	cd $(BUILD_DIR)/qtbase; $(MAKE) install
 	cd $(BUILD_DIR)/qttranslations; $(MAKE) install
+	rm -f $(PREFIX)/lib/Qt*.framework/Qt*.prl
 	cd $(PREFIX)/include; ln -sf ../lib/QtNetwork.framework/Headers/ QtNetwork
 	cd $(PREFIX)/include; ln -sf ../lib/QtWidgets.framework/Headers/ QtWidgets
 	cd $(PREFIX)/include; ln -sf ../lib/QtGui.framework/Headers/ QtGui
