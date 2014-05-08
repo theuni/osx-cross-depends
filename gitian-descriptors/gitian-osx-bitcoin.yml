@@ -25,7 +25,7 @@ files:
 - "osx-depends-qt-5.2.1-r1.tar.gz"
 
 script: |
-  HOST=i686-apple-darwin11
+  HOST=x86_64-apple-darwin11
   PREFIX=`pwd`/osx-cross-depends/prefix
   SDK=`pwd`/osx-cross-depends/SDKs/MacOSX10.6.sdk
   NATIVEPREFIX=`pwd`/osx-cross-depends/native-prefix
@@ -46,12 +46,12 @@ script: |
 
   export ZERO_AR_DATE=1
   ./autogen.sh
-  ./configure --host=${HOST} --with-boost=${PREFIX} CC=clang CXX=clang++ OBJC=clang OBJCXX=clang++ CFLAGS="-target ${HOST} -mmacosx-version-min=10.5 --sysroot ${SDK} -msse2 -Qunused-arguments" CXXFLAGS="-target ${HOST} -mmacosx-version-min=10.5 --sysroot ${SDK} -msse2 -Qunused-arguments" LDFLAGS="-B${NATIVEPREFIX}/bin -L${PREFIX}/lib -L${SDK}/usr/lib/i686-apple-darwin10/4.2.1" CPPFLAGS="-I /usr/include/clang/3.2/include -I${PREFIX}/include" SSL_LIBS="-lz -lssl -lcrypto" --disable-tests -with-gui=qt5 PKG_CONFIG_LIBDIR="${PREFIX}/lib/pkgconfig" --disable-dependency-tracking --disable-maintainer-mode
+  ./configure --host=${HOST} --with-boost=${PREFIX} CC=clang CXX=clang++ OBJC=clang OBJCXX=clang++ CFLAGS="-target ${HOST} -mmacosx-version-min=10.6 --sysroot ${SDK} -msse2 -Qunused-arguments" CXXFLAGS="-target ${HOST} -mmacosx-version-min=10.6 --sysroot ${SDK} -msse2 -Qunused-arguments" LDFLAGS="-B${NATIVEPREFIX}/bin -L${PREFIX}/lib -L${SDK}/usr/lib/i686-apple-darwin10/4.2.1" CPPFLAGS="-I /usr/include/clang/3.2/include -I${PREFIX}/include" SSL_LIBS="-lz -lssl -lcrypto" --disable-tests -with-gui=qt5 PKG_CONFIG_LIBDIR="${PREFIX}/lib/pkgconfig" --disable-dependency-tracking --disable-maintainer-mode
   make dist
   mkdir -p distsrc
   cd distsrc
   tar --strip-components=1 -xf ../bitcoin-*.tar*
-  ./configure --host=${HOST} --with-boost=${PREFIX} CC=clang CXX=clang++ OBJC=clang OBJCXX=clang++ CFLAGS="-target ${HOST} -mmacosx-version-min=10.5 --sysroot ${SDK} -msse2 -Qunused-arguments" CXXFLAGS="-target ${HOST} -mmacosx-version-min=10.5 --sysroot ${SDK} -msse2 -Qunused-arguments" LDFLAGS="-B${NATIVEPREFIX}/bin -L${PREFIX}/lib -L${SDK}/usr/lib/i686-apple-darwin10/4.2.1" CPPFLAGS="-I /usr/include/clang/3.2/include -I${PREFIX}/include" SSL_LIBS="-lz -lssl -lcrypto" --disable-tests -with-gui=qt5 PKG_CONFIG_LIBDIR="${PREFIX}/lib/pkgconfig"  --disable-dependency-tracking --disable-maintainer-mode
+  ./configure --host=${HOST} --with-boost=${PREFIX} CC=clang CXX=clang++ OBJC=clang OBJCXX=clang++ CFLAGS="-target ${HOST} -mmacosx-version-min=10.6 --sysroot ${SDK} -msse2 -Qunused-arguments" CXXFLAGS="-target ${HOST} -mmacosx-version-min=10.6 --sysroot ${SDK} -msse2 -Qunused-arguments" LDFLAGS="-B${NATIVEPREFIX}/bin -L${PREFIX}/lib -L${SDK}/usr/lib/i686-apple-darwin10/4.2.1" CPPFLAGS="-I /usr/include/clang/3.2/include -I${PREFIX}/include" SSL_LIBS="-lz -lssl -lcrypto" --disable-tests -with-gui=qt5 PKG_CONFIG_LIBDIR="${PREFIX}/lib/pkgconfig"  --disable-dependency-tracking --disable-maintainer-mode
   make $MAKEOPTS
   export LD_PRELOAD=/usr/lib/faketime/libfaketime.so.1
   export FAKETIME=$REFERENCE_DATETIME
