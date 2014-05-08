@@ -57,4 +57,4 @@ script: |
   export FAKETIME=$REFERENCE_DATETIME
   export TZ=UTC
   make deploy
-  mv Bitcoin-Qt.dmg $OUTDIR
+  dmg Bitcoin-Qt.dmg $OUTDIR/Bitcoin-Qt.dmg

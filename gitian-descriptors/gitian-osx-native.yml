@@ -37,6 +37,7 @@ files:
 - "xar-1.5.2.tar.gz"
 - "MacOSX10.6.pkg"
 - "cdrkit-1.1.11.tar.gz"
+- "libdmg-hfsplus-v0.1.tar.gz"
 
 script: |
   export REFERENCE_DATETIME
@@ -75,10 +76,11 @@ script: |
   make $MAKEOPTS -f native-libprotobuf.mk
   make $MAKEOPTS -f native-cctools.mk
   make $MAKEOPTS -f native-cdrkit.mk
+  make $MAKEOPTS -f native-libdmg-hfsplus.mk
 
   rm -rf native-prefix/docs
 
   export GZIP="-9n"
-  export REVISION=r1
+  export REVISION=r2
   find native-prefix SDKs | sort | tar --no-recursion -czf osx-native-depends-$REVISION.tar.gz -T -
   mv osx-native-depends-$REVISION.tar.gz $OUTDIR

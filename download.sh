@@ -30,6 +30,7 @@ ${RETRIEVE} http://download.qt-project.org/official_releases/qt/5.2/5.2.1/single
 ${RETRIEVE} https://xar.googlecode.com/files/xar-1.5.2.tar.gz
 ${RETRIEVE} http://llvm.org/releases/3.2/clang+llvm-3.2-x86-linux-ubuntu-12.04.tar.gz
 ${RETRIEVE} http://cdrkit.org/releases/cdrkit-1.1.11.tar.gz
+${RETRIEVE} https://github.com/theuni/libdmg-hfsplus/archive/libdmg-hfsplus-v0.1.tar.gz
 
 cd sources
 #gitian doesn't like the + in this filename
@@ -52,5 +53,6 @@ echo "dfd71487513c871bad485806bfd1fdb304dedc84d2b01a8fb8e0940b50597a98  qrencode
 echo "84e924181d4ad6db00239d87250cc89868484a14841f77fb85ab1f1dbdcd7da1  qt-everywhere-opensource-src-5.2.1.tar.gz" | sha256sum -c
 echo "4c5d5682803cdfab16d72365cf51fc4075d597c5eeaa8c7d1990fea98cdae3e6  xar-1.5.2.tar.gz" | sha256sum -c
 echo "d1c030756ecc182defee9fe885638c1785d35a2c2a297b4604c0e0dcc78e47da  cdrkit-1.1.11.tar.gz" | sha256sum -c
+echo "6569a02eb31c2827080d7d59001869ea14484c281efab0ae7f2b86af5c3120b3  libdmg-hfsplus-v0.1.tar.gz" | sha256sum -c
 cd ..
 
