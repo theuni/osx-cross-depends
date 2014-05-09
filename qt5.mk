@@ -52,9 +52,11 @@ $(PREFIX)/lib/libQtCore.a: $(SOURCE_FILE)
 
 
 	cd $(BUILD_DIR); $(MAKE) module-qttranslations-make_first
+	cd $(BUILD_DIR); $(MAKE) module-qttools-make_first
 	cd $(BUILD_DIR)/qtbase; $(MAKE)
 	cd $(BUILD_DIR)/qtbase; $(MAKE) install
 	cd $(BUILD_DIR)/qttranslations; $(MAKE) install
+	cd $(BUILD_DIR)/qttools/src/linguist; $(MAKE) install
 	rm -f $(PREFIX)/lib/Qt*.framework/Qt*.prl
 	cd $(PREFIX)/include; ln -sf ../lib/QtNetwork.framework/Headers/ QtNetwork
 	cd $(PREFIX)/include; ln -sf ../lib/QtWidgets.framework/Headers/ QtWidgets
