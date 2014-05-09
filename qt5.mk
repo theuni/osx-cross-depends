@@ -57,6 +57,12 @@ $(PREFIX)/lib/libQtCore.a: $(SOURCE_FILE)
 	cd $(BUILD_DIR)/qtbase; $(MAKE) install
 	cd $(BUILD_DIR)/qttranslations; $(MAKE) install
 	cd $(BUILD_DIR)/qttools/src/linguist; $(MAKE) install
+
+	# This file should not be installed to the destination. It's native and
+	# non-deterministic. Remove it.
+	# See: https://bugreports.qt-project.org/browse/QTBUG-31393
+	rm -f $(PREFIX)/lib/libQt5Bootstrap.a
+
 	rm -f $(PREFIX)/lib/Qt*.framework/Qt*.prl
 	cd $(PREFIX)/include; ln -sf ../lib/QtNetwork.framework/Headers/ QtNetwork
 	cd $(PREFIX)/include; ln -sf ../lib/QtWidgets.framework/Headers/ QtWidgets
