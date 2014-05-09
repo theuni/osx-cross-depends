@@ -26,9 +26,10 @@ files:
 - "qrencode-3.4.3.tar.bz2"
 - "MacOSX10.6.pkg"
 - "clang-llvm-3.2-x86-linux-ubuntu-12.04.tar.gz"
-- "osx-native-depends-r1.tar.gz"
+- "osx-native-depends-r2.tar.gz"
 
 script: |
+  REVISION=r2
   export SOURCES_PATH=`pwd`
   export TAR_OPTIONS="-m --mtime="$REFERENCE_DATE\\\ $REFERENCE_TIME""
 
@@ -37,7 +38,7 @@ script: |
   export PATH=`pwd`/clang+llvm-3.2-x86-linux-ubuntu-12.04/bin:$PATH
 
   cd osx-cross-depends
-  tar xf /home/ubuntu/build/osx-native-depends-r1.tar.gz
+  tar xf /home/ubuntu/build/osx-native-depends-r2.tar.gz
   export PATH=`pwd`/native-prefix/bin:$PATH
 
   make $MAKEOPTS -f libbdb.mk
@@ -48,6 +49,6 @@ script: |
   make $MAKEOPTS -f boost.mk
 
   export GZIP="-9n"
-  find native-prefix prefix | sort | tar --no-recursion -czf osx-depends-r1.tar.gz -T -
+  find native-prefix prefix | sort | tar --no-recursion -czf osx-depends-${REVISION}.tar.gz -T -
 
-  mv osx-depends-r1.tar.gz $OUTDIR
+  mv osx-depends-${REVISION}.tar.gz $OUTDIR

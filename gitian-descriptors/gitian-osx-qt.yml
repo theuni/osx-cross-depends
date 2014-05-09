@@ -20,10 +20,11 @@ remotes:
 files:
 - "qt-everywhere-opensource-src-5.2.1.tar.gz"
 - "clang-llvm-3.2-x86-linux-ubuntu-12.04.tar.gz"
-- "osx-native-depends-r1.tar.gz"
-- "osx-depends-r1.tar.gz"
+- "osx-native-depends-r2.tar.gz"
+- "osx-depends-r2.tar.gz"
 
 script: |
+  REVISION=r2
   export SOURCES_PATH=`pwd`
   export TAR_OPTIONS="-m --mtime="$REFERENCE_DATE\\\ $REFERENCE_TIME""
 
@@ -45,9 +46,9 @@ script: |
   export PATH=`pwd`/clang+llvm-3.2-x86-linux-ubuntu-12.04/bin:$PATH
   cd osx-cross-depends
 
-  tar xf /home/ubuntu/build/osx-native-depends-r1.tar.gz
+  tar xf /home/ubuntu/build/osx-native-depends-r2.tar.gz
   export PATH=`pwd`/native-prefix/bin:$PATH
-  tar xf /home/ubuntu/build/osx-depends-r1.tar.gz
+  tar xf /home/ubuntu/build/osx-depends-r2.tar.gz
 
   make $MAKEOPTS -f qt5.mk
 
@@ -55,6 +56,6 @@ script: |
   find prefix/lib -name "*.prl" -delete
 
   export GZIP="-9n"
-  find native-prefix prefix | sort | tar --no-recursion -czf osx-depends-qt-5.2.1-r1.tar.gz -T -
+  find native-prefix prefix | sort | tar --no-recursion -czf osx-depends-qt-5.2.1-${REVISION}.tar.gz -T -
 
-  mv osx-depends-qt-5.2.1-r1.tar.gz $OUTDIR
+  mv osx-depends-qt-5.2.1-${REVISION}.tar.gz $OUTDIR
