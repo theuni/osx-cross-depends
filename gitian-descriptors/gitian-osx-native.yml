@@ -6,19 +6,15 @@ architectures:
 - "i386"
 packages:
 - "git-core"
-- "unzip"
-- "autoconf2.13"
-- "libtool"
 - "automake"
 - "faketime"
-- "bsdmainutils"
-- "libxml2-dev"
 - "libssl-dev"
-- "groff"
 - "libbz2-dev"
 - "libz-dev"
 - "cmake"
 - "libcap-dev"
+- "p7zip-full"
+- "uuid-dev"
 
 reference_datetime: "2013-06-01 00:00:00"
 remotes:
@@ -28,15 +24,13 @@ files:
 - "10cc648683617cca8bcbeae507888099b41b530c.tar.gz"
 - "cctools-809.tar.gz"
 - "dyld-195.5.tar.gz"
-- "e2fsprogs-libs-1.41.14.tar.gz"
 - "ld64-127.2.tar.gz"
-- "llvmgcc42-2336.1.tar.gz"
-- "openssl-1.0.1g.tar.gz"
 - "protobuf-2.5.0.tar.bz2"
-- "xar-1.5.2.tar.gz"
 - "MacOSX10.6.pkg"
 - "cdrkit-1.1.11.tar.gz"
 - "libdmg-hfsplus-v0.1.tar.gz"
+- "clang-llvm-3.2-x86-linux-ubuntu-12.04.tar.gz"
+
 
 script: |
   REVISION=r2
@@ -68,12 +62,9 @@ script: |
   export SOURCES_PATH=`pwd`
 
   cd osx-cross-depends
-  make $MAKEOPTS -f native-xar.mk
   make $MAKEOPTS -f native-sdk.mk
-  make $MAKEOPTS -f native-llvm-lto.mk
-  make $MAKEOPTS -f native-libuuid.mk
-  make $MAKEOPTS -f native-openssl.mk
   make $MAKEOPTS -f native-libprotobuf.mk
+  make $MAKEOPTS -f native-clang.mk
   make $MAKEOPTS -f native-cctools.mk
   make $MAKEOPTS -f native-cdrkit.mk
   make $MAKEOPTS -f native-libdmg-hfsplus.mk

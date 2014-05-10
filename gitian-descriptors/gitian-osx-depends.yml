@@ -6,12 +6,7 @@ architectures:
 - "i386"
 packages:
 - "git-core"
-- "unzip"
-- "autoconf2.13"
-- "libtool"
 - "automake"
-- "faketime"
-- "bsdmainutils"
 
 reference_datetime: "2013-06-01 00:00:00"
 remotes:
@@ -32,10 +27,6 @@ script: |
   REVISION=r2
   export SOURCES_PATH=`pwd`
   export TAR_OPTIONS="-m --mtime="$REFERENCE_DATE\\\ $REFERENCE_TIME""
-
-  faketime "$REFERENCE_DATETIME" tar xf clang-llvm-3.2-x86-linux-ubuntu-12.04.tar.gz
-
-  export PATH=`pwd`/clang+llvm-3.2-x86-linux-ubuntu-12.04/bin:$PATH
 
   cd osx-cross-depends
   tar xf /home/ubuntu/build/osx-native-depends-r2.tar.gz

@@ -2,9 +2,7 @@
 set -e
 MAKEOPTS=-j4
 
-make $MAKEOPTS -f native-xar.mk
 make $MAKEOPTS -f native-sdk.mk
-make $MAKEOPTS -f native-llvm-lto.mk
 make $MAKEOPTS -f native-libuuid.mk
 make $MAKEOPTS -f native-openssl.mk
 make $MAKEOPTS -f native-libprotobuf.mk

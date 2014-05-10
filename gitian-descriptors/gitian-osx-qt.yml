@@ -6,12 +6,8 @@ architectures:
 - "i386"
 packages:
 - "git-core"
-- "unzip"
-- "autoconf2.13"
-- "libtool"
 - "automake"
 - "faketime"
-- "bsdmainutils"
 
 reference_datetime: "2013-06-01 00:00:00"
 remotes:
@@ -19,7 +15,6 @@ remotes:
   "dir": "osx-cross-depends"
 files:
 - "qt-everywhere-opensource-src-5.2.1.tar.gz"
-- "clang-llvm-3.2-x86-linux-ubuntu-12.04.tar.gz"
 - "osx-native-depends-r2.tar.gz"
 - "osx-depends-r2.tar.gz"
 
@@ -39,11 +34,6 @@ script: |
   chmod +x $HOME/date
   export PATH=$HOME:$PATH
 
-
-  faketime "$REFERENCE_DATETIME" tar xf clang-llvm-3.2-x86-linux-ubuntu-12.04.tar.gz
-  export FAKETIME=$REFERENCE_DATETIME
-
-  export PATH=`pwd`/clang+llvm-3.2-x86-linux-ubuntu-12.04/bin:$PATH
   cd osx-cross-depends
 
   tar xf /home/ubuntu/build/osx-native-depends-r2.tar.gz
