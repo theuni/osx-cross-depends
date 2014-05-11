@@ -28,7 +28,7 @@ SPECFILE=$(BUILD_DIR)/qtbase/mkspecs/macx-clang-linux/qmake.conf
 
 $(PREFIX)/lib/libQtCore.a: $(SOURCE_FILE)
 	tar -C $(BUILD_BASE) -xf $<
-	cp -rf patches/qt/macx-clang-linux $(BUILD_DIR)/qtbase/mkspecs/
+	cp -rf $(PATCHES_DIR)/qt/macx-clang-linux $(BUILD_DIR)/qtbase/mkspecs/
 	sed -i "s|^CUSTOM_HOST=$$|CUSTOM_HOST=$(HOST)|" $(SPECFILE)
 	sed -i "s|^CUSTOM_EXTRA_INCLUDES=$$|CUSTOM_EXTRA_INCLUDES=-I$(CLANG_INCLUDES)|" $(SPECFILE)
 	sed -i "s|^CUSTOM_BINUTILS_PATH=$$|CUSTOM_BINUTILS_PATH=-B$(NATIVEPREFIX)/bin|" $(SPECFILE)
